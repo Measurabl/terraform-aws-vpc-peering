@@ -48,6 +48,11 @@ We literally have [*hundreds of terraform modules*][terraform_modules] that are 
 
 ## Usage
 
+
+**IMPORTANT:** The `master` branch is used in `source` just as an example. In your code, do not pin to `master` because there may be breaking changes between releases.
+Instead pin to the release tag (e.g. `?ref=tags/x.y.z`) of one of our [latest releases](https://github.com/cloudposse/terraform-aws-vpc-peering/releases).
+
+
 **IMPORTANT:** Using the `master` branch is just an example.
 Do not pin to `master` in your code because there may be breaking changes between releases.
 Instead pin to the release tag (e.g. `?ref=tags/x.y.z`) of one of our [latest releases](https://github.com/cloudposse/terraform-aws-vpc-peering/releases).
@@ -104,8 +109,8 @@ Available targets:
 |------|-------------|:----:|:-----:|:-----:|
 | acceptor_allow_remote_vpc_dns_resolution | Allow acceptor VPC to resolve public DNS hostnames to private IP addresses when queried from instances in the requestor VPC | string | `true` | no |
 | acceptor_vpc_id | Acceptor VPC ID | string | `` | no |
-| acceptor_vpc_tags | Acceptor VPC tags | map | `<map>` | no |
-| attributes | Additional attributes (e.g. `policy` or `role`) | list | `<list>` | no |
+| acceptor_vpc_tags | Acceptor VPC tags | map(string) | `<map>` | no |
+| attributes | Additional attributes (e.g. `policy` or `role`) | list(string) | `<list>` | no |
 | auto_accept | Automatically accept the peering (both VPCs need to be in the same AWS account) | string | `true` | no |
 | delimiter | Delimiter to be used between `namespace`, `stage`, `name`, and `attributes` | string | `-` | no |
 | enabled | Set to false to prevent the module from creating or accessing any resources | string | `true` | no |
@@ -113,9 +118,9 @@ Available targets:
 | namespace | Namespace (e.g. `cp` or `cloudposse`) | string | - | yes |
 | requestor_allow_remote_vpc_dns_resolution | Allow requestor VPC to resolve public DNS hostnames to private IP addresses when queried from instances in the acceptor VPC | string | `true` | no |
 | requestor_vpc_id | Requestor VPC ID | string | `` | no |
-| requestor_vpc_tags | Requestor VPC tags | map | `<map>` | no |
+| requestor_vpc_tags | Requestor VPC tags | map(string) | `<map>` | no |
 | stage | Stage (e.g. `prod`, `dev`, `staging`) | string | - | yes |
-| tags | Additional tags (e.g. map('BusinessUnit`,`XYZ`) | map | `<map>` | no |
+| tags | Additional tags (e.g. map('BusinessUnit`,`XYZ`) | map(string) | `<map>` | no |
 
 ## Outputs
 
